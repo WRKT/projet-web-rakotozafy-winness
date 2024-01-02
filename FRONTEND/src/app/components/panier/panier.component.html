@@ -1,5 +1,4 @@
-<h2 class="my-4 text-center">Panier</h2>
-<div class="container mb-5">
+<div class="container mb-5 panier">
   <table
     class="table borderless"
     *ngIf="(listeProduitsPanier$ | async)?.length; else noProduits"
@@ -38,7 +37,7 @@
   </div>
 
   <ng-template #noProduits>
-    <p class="text-center">
+    <p class="text-center mt-2">
       Oops ! Le panier est vide. Revenez au catalogue en cliquant
       <a class="fw-bolder link-dark" [routerLink]="['/catalogue']"> ICI </a>
     </p>

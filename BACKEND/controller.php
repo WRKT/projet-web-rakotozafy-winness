@@ -75,6 +75,58 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    return addHeaders ($response);
 	}
 
+	function creerUtilisateur(Request $request, Response $response, $args) {
+		global $entityManager;
+	
+		$err = false;
+		$body = $request->getParsedBody();
+	
+		// Récupérez les données du formulaire
+		$nom = $body['nom'] ?? "";
+		$prenom = $body['prenom'] ?? "";
+		$adresse = $body['adresse'] ?? "";
+		$codePostal = $body['codePostal'] ?? "";
+		$ville = $body['ville'] ?? "";
+		$email = $body['email'] ?? "";
+		$sexe = $body['sexe'] ?? "";
+		$login = $body['login'] ?? "";
+		$password = $body['password'] ?? "";
+		$telephone = $body['telephone'] ?? "";
+	
+		// Ajoutez la logique de validation si nécessaire
+		if (empty($nom) || empty($prenom) || empty($adresse) || empty($codePostal) || empty($ville) || empty($email) || empty($sexe) || empty($login) || empty($password) || empty($telephone)) {
+			$err = true;
+		}
+	
+		if (!$err) {
+			// Créez un nouvel utilisateur
+			$utilisateur = new Utilisateur();
+			$utilisateur->setNom($nom);
+			$utilisateur->setPrenom($prenom);
+			$utilisateur->setAdresse($adresse);
+			$utilisateur->setCodePostal($codePostal);
+			$utilisateur->setVille($ville);
+			$utilisateur->setEmail($email);
+			$utilisateur->setSexe($sexe);
+			$utilisateur->setLogin($login);
+			$utilisateur->setPassword($password);
+			$utilisateur->setTelephone($telephone);
+	
+			// Persistez l'utilisateur dans la base de données
+			$entityManager->persist($utilisateur);
+			$entityManager->flush();
+	
+			$response = addHeaders($response);
+			$response = createJwT($response);
+	
+			$data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
+			$response->getBody()->write(json_encode($data));
+		} else {
+			$response = $response->withStatus(500);
+		}
+	
+		return addHeaders($response);
+	}
 	// APi d'authentification générant un JWT
 	function postLogin (Request $request, Response $response, $args) {   
 	    global $entityManager;

@@ -1,0 +1,132 @@
+<div class="login-container col-md-4 mx-auto">
+    <form (ngSubmit)="creerUtilisateur()">
+      <div class="form-group">
+        <label for="nom" class="fs-5">Nom</label>
+        <input
+          [(ngModel)]="nom"
+          name="nom"
+          type="text"
+          class="form-control mb-4 mt-2"
+          id="nom"
+          placeholder="Entrez votre nom ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="prenom" class="fs-5">Prénom</label>
+        <input
+          [(ngModel)]="prenom"
+          name="prenom"
+          type="text"
+          class="form-control mb-4 mt-2"
+          id="prenom"
+          placeholder="Entrez votre prénom ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="adresse" class="fs-5">Adresse</label>
+        <input
+          [(ngModel)]="adresse"
+          name="adresse"
+          type="text"
+          class="form-control mb-4 mt-2"
+          id="adresse"
+          placeholder="Entrez votre adresse ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="codePostal" class="fs-5">Code Postal</label>
+        <input
+          [(ngModel)]="codePostal"
+          name="codePostal"
+          type="text"
+          class="form-control mb-4 mt-2"
+          id="codePostal"
+          placeholder="Entrez votre code postal ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="ville" class="fs-5">Ville</label>
+        <input
+          [(ngModel)]="ville"
+          name="ville"
+          type="text"
+          class="form-control mb-4 mt-2"
+          id="ville"
+          placeholder="Entrez votre ville ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email" class="fs-5">Email</label>
+        <input
+          [(ngModel)]="email"
+          name="email"
+          type="email"
+          class="form-control mb-4 mt-2"
+          id="email"
+          placeholder="Entrez votre email ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="sexe" class="fs-5">Sexe</label>
+        <select
+          [(ngModel)]="sexe"
+          name="sexe"
+          class="form-select mb-4 mt-2"
+          id="sexe"
+          required
+        >
+          <option value="homme">Homme</option>
+          <option value="femme">Femme</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="login" class="fs-5">Login</label>
+        <input
+          [(ngModel)]="login"
+          name="login"
+          type="text"
+          class="form-control mb-4 mt-2"
+          id="login"
+          placeholder="Entrez votre nom d'utilisateur ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password" class="fs-5">Mot de passe</label>
+        <input
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+          class="form-control mb-4 mt-2"
+          id="password"
+          placeholder="Entrez votre mot de passe ..."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="telephone" class="fs-5">Téléphone</label>
+        <input
+          [(ngModel)]="telephone"
+          name="telephone"
+          type="tel"
+          class="form-control mb-4 mt-2"
+          id="telephone"
+          placeholder="Entrez votre téléphone ..."
+          required
+        />
+      </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-dark fs-5" type="submit">S'inscrire</button>
+      </div>
+    </form>
+  </div>
+  
+  
+

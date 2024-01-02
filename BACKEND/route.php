@@ -12,6 +12,8 @@
 
 	$app->options('/api/utilisateur', 'optionsUtilisateur');
 
+	$app->post('/api/utilisateur/creation', 'creerUtilisateur');
+
 	// API Nécessitant un Jwt valide
 	$app->get('/api/utilisateur', 'getUtilisateur');
 
