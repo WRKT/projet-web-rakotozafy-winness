@@ -1,0 +1,40 @@
+<div class="row mt-4">
+  <div class="col-md-4">
+    <form>
+      <label class="fs-5 form-label">Recherche :</label>
+      <input
+        #input 
+        type="text"
+        class="form-control mb-4"
+        placeholder="Nom produit, categorie, ..." 
+        >
+    </form>
+  </div>
+</div>
+
+<table class="table borderless">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Catégorie</th>
+      <th>Prix</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="model | async as response">
+    <tr *ngFor="let produit of response">
+      <td>{{ produit.id }}</td>
+      <td>{{ produit.nom }}</td>
+      <td>{{ produit.description }}</td>
+      <td>{{ produit.categorie }}</td>
+      <td>{{ produit.prix | currency : "EUR" }}</td>
+      <td>
+        <button (click)="addProduit(produit)" class="btn btn-dark">
+          Ajouter au Panier
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

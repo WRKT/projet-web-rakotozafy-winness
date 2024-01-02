@@ -1,0 +1,46 @@
+<h2 class="my-4 text-center">Panier</h2>
+<div class="container mb-5">
+  <table
+    class="table borderless"
+    *ngIf="(listeProduitsPanier$ | async)?.length; else noProduits"
+  >
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Catégorie</th>
+        <th>Prix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let produit of listeProduitsPanier$ | async">
+        <td>{{ produit.nom }}</td>
+        <td>{{ produit.description }}</td>
+        <td>{{ produit.categorie }}</td>
+        <td>{{ produit.prix | currency : "EUR" }}</td>
+        <td>
+          <button (click)="Remove(produit)" class="btn btn-danger">
+            Supprimer du panier
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center">
+    <button
+      *ngIf="(listeProduitsPanier$ | async)?.length"
+      class="btn btn-dark"
+      (click)="Clear()"
+    >
+      Vider Panier
+    </button>
+  </div>
+
+  <ng-template #noProduits>
+    <p class="text-center">
+      Oops ! Le panier est vide. Revenez au catalogue en cliquant
+      <a class="fw-bolder link-dark" [routerLink]="['/catalogue']"> ICI </a>
+    </p>
+  </ng-template>
+</div>
