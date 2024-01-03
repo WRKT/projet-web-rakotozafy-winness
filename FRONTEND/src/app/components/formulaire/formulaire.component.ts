@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Client } from 'src/app/shared/models/client.model';
+import { UtilisateurService } from 'src/services/utilisateur.service';
 
 @Component({
   selector: 'app-formulaire',
@@ -6,30 +8,31 @@ import { Component } from '@angular/core';
   styleUrls: ['./formulaire.component.css']
 })
 export class FormulaireComponent {
-  nom!: string;
-  prenom!: string;
-  adresse!: string;
-  codePostal!: string;
-  ville!: string;
-  email!: string;
-  sexe!: string;
-  login!: string;
-  password!: string;
-  telephone!: number;
+  client: Client = {
+    nom: '',
+    prenom: '',
+    adresse: '',
+    codepostal: '',
+    ville: '',
+    email: '',
+    sexe: '',
+    login: '',
+    password: '',
+    telephone: ''
+  };
+
+  constructor(private service: UtilisateurService) { }
 
   creerUtilisateur() {
-    console.log('Nouvel utilisateur créé :', {
-      nom: this.nom,
-      prenom: this.prenom,
-      adresse: this.adresse,
-      codePostal: this.codePostal,
-      ville: this.ville,
-      email: this.email,
-      sexe: this.sexe,
-      login: this.login,
-      password: this.password,
-      telephone: this.telephone
-    });
-
+    console.log('Création de l\'utilisateur', this.client);
+    this.service.creerUtilisateur(this.client)
+      .subscribe(
+        (response) => {
+          console.log('Utilisateur créé avec succès', response);
+        },
+        (error) => {
+          console.error('Erreur lors de la création de l\'utilisateur', error);
+        }
+      );
   }
 }

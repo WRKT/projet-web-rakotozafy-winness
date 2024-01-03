@@ -47,10 +47,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	}
 
 	function optionsUtilisateur (Request $request, Response $response, $args) {
-	    
 	    // Evite que le front demande une confirmation à chaque modification
 	    $response = $response->withHeader("Access-Control-Max-Age", 600);
-	    
 	    return addHeaders ($response);
 	}
 
@@ -90,11 +88,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 		$email = $body['email'] ?? "";
 		$sexe = $body['sexe'] ?? "";
 		$login = $body['login'] ?? "";
-		$password = $body['password'] ?? "";
+		$passwordword = $body['password'] ?? "";
 		$telephone = $body['telephone'] ?? "";
 	
 		// Ajoutez la logique de validation si nécessaire
-		if (empty($nom) || empty($prenom) || empty($adresse) || empty($codePostal) || empty($ville) || empty($email) || empty($sexe) || empty($login) || empty($password) || empty($telephone)) {
+		if (empty($nom) || empty($prenom) || empty($adresse) || empty($codePostal) || empty($ville) || empty($email) || empty($sexe) || empty($login) || empty($passwordword) || empty($telephone)) {
 			$err = true;
 		}
 	
@@ -109,7 +107,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 			$utilisateur->setEmail($email);
 			$utilisateur->setSexe($sexe);
 			$utilisateur->setLogin($login);
-			$utilisateur->setPassword($password);
+			$utilisateur->setPassword($passwordword);
 			$utilisateur->setTelephone($telephone);
 	
 			// Persistez l'utilisateur dans la base de données
@@ -125,7 +123,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 			$response = $response->withStatus(500);
 		}
 	
-		return addHeaders($response);
+		return $response;
 	}
 	// APi d'authentification générant un JWT
 	function postLogin (Request $request, Response $response, $args) {   
@@ -133,18 +131,18 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    $err=false;
 	    $body = $request->getParsedBody();
 	    $login = $body ['login'] ?? "";
-	    $pass = $body ['password'] ?? "";
+	    $password = $body ['password'] ?? "";
 
 	    if (!preg_match("/[a-zA-Z0-9]{1,20}/",$login))   {
 		$err = true;
 	    }
-	    if (!preg_match("/[a-zA-Z0-9]{1,20}/",$pass))  {
+	    if (!preg_match("/[a-zA-Z0-9]{1,20}/",$password))  {
 		$err=true;
 	    }
 	    if (!$err) {
 		$utilisateurRepository = $entityManager->getRepository('Utilisateurs');
-		$utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'password' => $pass));
-		if ($utilisateur and $login == $utilisateur->getLogin() and $pass == $utilisateur->getPassword()) {
+		$utilisateur = $utilisateurRepository->findOneBy(array('login' => $login, 'password' => $password));
+		if ($utilisateur and $login == $utilisateur->getLogin() and $password == $utilisateur->getPassword()) {
 		    $response = addHeaders ($response);
 		    $response = createJwT ($response);
 		    $data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());

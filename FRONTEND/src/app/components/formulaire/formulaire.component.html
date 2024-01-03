@@ -1,9 +1,9 @@
-<div class="login-container col-md-4 mx-auto">
+<div class="login-container col-md-6 mx-auto">
     <form (ngSubmit)="creerUtilisateur()">
       <div class="form-group">
         <label for="nom" class="fs-5">Nom</label>
         <input
-          [(ngModel)]="nom"
+          [(ngModel)]="client.nom"
           name="nom"
           type="text"
           class="form-control mb-4 mt-2"
@@ -15,7 +15,7 @@
       <div class="form-group">
         <label for="prenom" class="fs-5">Prénom</label>
         <input
-          [(ngModel)]="prenom"
+          [(ngModel)]="client.prenom"
           name="prenom"
           type="text"
           class="form-control mb-4 mt-2"
@@ -27,7 +27,7 @@
       <div class="form-group">
         <label for="adresse" class="fs-5">Adresse</label>
         <input
-          [(ngModel)]="adresse"
+          [(ngModel)]="client.adresse"
           name="adresse"
           type="text"
           class="form-control mb-4 mt-2"
@@ -39,7 +39,7 @@
       <div class="form-group">
         <label for="codePostal" class="fs-5">Code Postal</label>
         <input
-          [(ngModel)]="codePostal"
+          [(ngModel)]="client.codepostal"
           name="codePostal"
           type="text"
           class="form-control mb-4 mt-2"
@@ -51,7 +51,7 @@
       <div class="form-group">
         <label for="ville" class="fs-5">Ville</label>
         <input
-          [(ngModel)]="ville"
+          [(ngModel)]="client.ville"
           name="ville"
           type="text"
           class="form-control mb-4 mt-2"
@@ -63,7 +63,7 @@
       <div class="form-group">
         <label for="email" class="fs-5">Email</label>
         <input
-          [(ngModel)]="email"
+          [(ngModel)]="client.email"
           name="email"
           type="email"
           class="form-control mb-4 mt-2"
@@ -75,7 +75,7 @@
       <div class="form-group">
         <label for="sexe" class="fs-5">Sexe</label>
         <select
-          [(ngModel)]="sexe"
+          [(ngModel)]="client.sexe"
           name="sexe"
           class="form-select mb-4 mt-2"
           id="sexe"
@@ -83,13 +83,12 @@
         >
           <option value="homme">Homme</option>
           <option value="femme">Femme</option>
-          <option value="autre">Autre</option>
         </select>
       </div>
       <div class="form-group">
         <label for="login" class="fs-5">Login</label>
         <input
-          [(ngModel)]="login"
+          [(ngModel)]="client.login"
           name="login"
           type="text"
           class="form-control mb-4 mt-2"
@@ -101,7 +100,7 @@
       <div class="form-group">
         <label for="password" class="fs-5">Mot de passe</label>
         <input
-          [(ngModel)]="password"
+          [(ngModel)]="client.password"
           name="password"
           type="password"
           class="form-control mb-4 mt-2"
@@ -113,7 +112,7 @@
       <div class="form-group">
         <label for="telephone" class="fs-5">Téléphone</label>
         <input
-          [(ngModel)]="telephone"
+          [(ngModel)]="client.telephone"
           name="telephone"
           type="tel"
           class="form-control mb-4 mt-2"
