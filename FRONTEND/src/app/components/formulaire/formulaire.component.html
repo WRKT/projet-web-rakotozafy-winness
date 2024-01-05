@@ -1,131 +1,61 @@
 <div class="login-container col-md-6 mx-auto">
-    <form (ngSubmit)="creerUtilisateur()">
-      <div class="form-group">
-        <label for="nom" class="fs-5">Nom</label>
-        <input
-          [(ngModel)]="client.nom"
-          name="nom"
-          type="text"
-          class="form-control mb-4 mt-2"
-          id="nom"
-          placeholder="Entrez votre nom ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="prenom" class="fs-5">Prénom</label>
-        <input
-          [(ngModel)]="client.prenom"
-          name="prenom"
-          type="text"
-          class="form-control mb-4 mt-2"
-          id="prenom"
-          placeholder="Entrez votre prénom ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="adresse" class="fs-5">Adresse</label>
-        <input
-          [(ngModel)]="client.adresse"
-          name="adresse"
-          type="text"
-          class="form-control mb-4 mt-2"
-          id="adresse"
-          placeholder="Entrez votre adresse ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="codePostal" class="fs-5">Code Postal</label>
-        <input
-          [(ngModel)]="client.codepostal"
-          name="codepostal"
-          type="text"
-          class="form-control mb-4 mt-2"
-          id="codePostal"
-          placeholder="Entrez votre code postal ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="ville" class="fs-5">Ville</label>
-        <input
-          [(ngModel)]="client.ville"
-          name="ville"
-          type="text"
-          class="form-control mb-4 mt-2"
-          id="ville"
-          placeholder="Entrez votre ville ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="email" class="fs-5">Email</label>
-        <input
-          [(ngModel)]="client.email"
-          name="email"
-          type="email"
-          class="form-control mb-4 mt-2"
-          id="email"
-          placeholder="Entrez votre email ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="sexe" class="fs-5">Sexe</label>
-        <select
-          [(ngModel)]="client.sexe"
-          name="sexe"
-          class="form-select mb-4 mt-2"
-          id="sexe"
-          required
-        >
-          <option value="homme">M</option>
-          <option value="femme">F</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="login" class="fs-5">Login</label>
-        <input
-          [(ngModel)]="client.login"
-          name="login"
-          type="text"
-          class="form-control mb-4 mt-2"
-          id="login"
-          placeholder="Entrez votre nom d'utilisateur ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="password" class="fs-5">Mot de passe</label>
-        <input
-          [(ngModel)]="client.password"
-          name="password"
-          type="password"
-          class="form-control mb-4 mt-2"
-          id="password"
-          placeholder="Entrez votre mot de passe ..."
-          required
-        />
-      </div>
-      <div class="form-group">
-        <label for="telephone" class="fs-5">Téléphone</label>
-        <input
-          [(ngModel)]="client.telephone"
-          name="telephone"
-          type="tel"
-          class="form-control mb-4 mt-2"
-          id="telephone"
-          placeholder="Entrez votre téléphone ..."
-          required
-        />
-      </div>
-      <div class="text-center mt-4">
-        <button class="btn btn-dark fs-5" type="submit">S'inscrire</button>
-      </div>
-    </form>
-  </div>
-  
-  
+  <form [formGroup]="clientForm" (ngSubmit)="creerUtilisateur()">
+    <div class="form-group">
+      <label for="nom" class="fs-5">Nom</label>
+      <input formControlName="nom" name="nom" type="text" class="form-control mb-4 mt-2" id="nom"
+        placeholder="Entrez votre nom ..." required />
+    </div>
+    <div class="form-group">
+      <label for="prenom" class="fs-5">Prénom</label>
+      <input formControlName="prenom" name="prenom" type="text" class="form-control mb-4 mt-2" id="prenom"
+        placeholder="Entrez votre prénom ..." required />
+    </div>
 
+    <div class="form-group">
+      <label for="adresse" class="fs-5">Adresse</label>
+      <input formControlName="adresse" name="adresse" type="text" class="form-control mb-4 mt-2" id="adresse"
+        placeholder="Entrez votre adresse ..." required />
+    </div>
+    <div class="form-group">
+      <label for="codepostal" class="fs-5">Code postal</label>
+      <input formControlName="codepostal" name="codepostal" type="text" class="form-control mb-4 mt-2" id="codepostal"
+        placeholder="Entrez votre code postal ..." required />
+    </div>
+    <div class="form-group">
+      <label for="ville" class="fs-5">Ville</label>
+      <input formControlName="ville" name="ville" type="text" class="form-control mb-4 mt-2" id="ville"
+        placeholder="Entrez votre ville ..." required />
+    </div>
+    <div class="form-group">
+      <label for="email" class="fs-5">Email</label>
+      <input formControlName="email" name="email" type="email" class="form-control mb-4 mt-2" id="email"
+        placeholder="Entrez votre email ..." required />
+    </div>
+    <div class="form-group">
+      <label for="sexe" class="fs-5">Sexe</label>
+      <select formControlName="sexe" name="sexe" class="form-control mb-4 mt-2" id="sexe" required>
+        <option value="">Choisissez votre sexe...</option>
+        <option value="M">M</option>
+        <option value="F">F</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="login" class="fs-5">Login</label>
+      <input formControlName="login" name="login" type="login" class="form-control mb-4 mt-2" id="login"
+        placeholder="Entrez votre login ..." required />
+    </div>
+    <div class="form-group">
+      <label for="password" class="fs-5">Mot de passe</label>
+      <input formControlName="password" name="password" type="password" class="form-control mb-4 mt-2" id="password"
+        placeholder="Entrez votre mot de passe ..." required />
+    </div>
+    <div class="form-group">
+      <label for="telephone" class="fs-5">Telephone</label>
+      <input formControlName="telephone" name="telephone" type="text" class="form-control mb-4 mt-2" id="telephone"
+        placeholder="Entrez votre telephone ..." required />
+    </div>
+    <div class="text-center mt-4">
+      <button class="btn btn-dark fs-5" type="submit">S'inscrire</button>
+    </div>
+  </form>
+</div>

@@ -2,25 +2,13 @@
   <form (ngSubmit)="connexion()">
     <div class="form-group">
       <label for="login" class="fs-5">Nom utilisateur</label>
-      <input
-        [(ngModel)]="login"
-        name="login"
-        type="text"
-        class="form-control mb-4 mt-2"
-        id="username"
-        placeholder="Entrez le nom d'utilisateur..."
-      />
+      <input [(ngModel)]="login" name="login" type="text" class="form-control mb-4 mt-2" id="username"
+        placeholder="Entrez le nom d'utilisateur..." />
     </div>
     <div class="form-group">
       <label for="password" class="fs-5">Mot de passe</label>
-      <input
-        [(ngModel)]="password"
-        name="password"
-        type="password"
-        class="form-control mb-4 mt-2"
-        id="password"
-        placeholder="Renseignez votre mot de passe..."
-      />
+      <input [(ngModel)]="password" name="password" type="password" class="form-control mb-4 mt-2" id="password"
+        placeholder="Renseignez votre mot de passe..." />
     </div>
     <div class="text-center">
       <button class="btn btn-dark mb-5 fs-5" type="submit">Se connecter</button>
@@ -30,6 +18,6 @@
 
 <div *ngIf="connected" class="text-center">
   <p class="hello">Hello there, {{ prenom }} {{ nom }} 👋 !</p>
-  <p class="mb-5">Visitez le catalogue en cliquant <a class="fw-bolder link-dark" [routerLink]="['/catalogue']">ICI</a></p>
+  <p class="mb-5">Visitez le catalogue en cliquant <a class="fw-bolder link-dark" [routerLink]="['/catalogue']">ICI</a>
+  </p>
 </div>
-

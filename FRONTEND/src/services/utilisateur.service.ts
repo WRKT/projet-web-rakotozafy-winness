@@ -11,6 +11,6 @@ export class UtilisateurService {
   constructor(private http: HttpClient) {}
 
   creerUtilisateur(client: Client): Observable<any> {
-    return this.http.post(environment.backendCreationCompte, client)
+    return this.http.post<Client>(environment.backendCreationCompte, client)
   }
 }

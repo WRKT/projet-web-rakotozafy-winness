@@ -1,8 +1,5 @@
 <div class="container mb-5 panier">
-  <table
-    class="table borderless"
-    *ngIf="(listeProduitsPanier$ | async)?.length; else noProduits"
-  >
+  <table class="table borderless" *ngIf="(listeProduitsPanier$ | async)?.length; else noProduits">
     <thead>
       <tr>
         <th>Nom</th>
@@ -27,11 +24,7 @@
   </table>
 
   <div class="d-flex justify-content-center">
-    <button
-      *ngIf="(listeProduitsPanier$ | async)?.length"
-      class="btn btn-dark"
-      (click)="Clear()"
-    >
+    <button *ngIf="(listeProduitsPanier$ | async)?.length" class="btn btn-dark" (click)="Clear()">
       Vider Panier
     </button>
   </div>

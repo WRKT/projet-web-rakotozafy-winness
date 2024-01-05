@@ -83,31 +83,30 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 		$nom = $body['nom'] ?? "";
 		$prenom = $body['prenom'] ?? "";
 		$adresse = $body['adresse'] ?? "";
-		$codePostal = $body['codePostal'] ?? "";
+		$codepostal = $body['codepostal'] ?? "";
 		$ville = $body['ville'] ?? "";
 		$email = $body['email'] ?? "";
 		$sexe = $body['sexe'] ?? "";
 		$login = $body['login'] ?? "";
-		$passwordword = $body['password'] ?? "";
+		$password = $body['password'] ?? "";
 		$telephone = $body['telephone'] ?? "";
 	
 		// Ajoutez la logique de validation si nécessaire
-		if (empty($nom) || empty($prenom) || empty($adresse) || empty($codePostal) || empty($ville) || empty($email) || empty($sexe) || empty($login) || empty($passwordword) || empty($telephone)) {
+		if (empty($nom) || empty($prenom) || empty($adresse) || empty($codepostal) || empty($ville) || empty($email) || empty($sexe) || empty($login) || empty($password) || empty($telephone)) {
 			$err = true;
 		}
 	
 		if (!$err) {
-			// Créez un nouvel utilisateur
-			$utilisateur = new Utilisateur();
+			$utilisateur = new Utilisateurs();
 			$utilisateur->setNom($nom);
 			$utilisateur->setPrenom($prenom);
 			$utilisateur->setAdresse($adresse);
-			$utilisateur->setCodePostal($codePostal);
+			$utilisateur->setCodepostal($codepostal);
 			$utilisateur->setVille($ville);
 			$utilisateur->setEmail($email);
 			$utilisateur->setSexe($sexe);
 			$utilisateur->setLogin($login);
-			$utilisateur->setPassword($passwordword);
+			$utilisateur->setPassword($password);
 			$utilisateur->setTelephone($telephone);
 	
 			// Persistez l'utilisateur dans la base de données
@@ -117,7 +116,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 			$response = addHeaders($response);
 			$response = createJwT($response);
 	
-			$data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom());
+			$data = array('nom' => $utilisateur->getNom(), 'prenom' => $utilisateur->getPrenom(), 'adresse' => $utilisateur->getAdresse(), 'codepostal' => $utilisateur->getCodepostal(), 'ville' => $utilisateur->getVille(), 'email' => $utilisateur->getEmail(), 'sexe' => $utilisateur->getSexe(), 'login' => $utilisateur->getLogin(), 'password' => $utilisateur->getPassword(), 'telephone' => $utilisateur->getTelephone());
 			$response->getBody()->write(json_encode($data));
 		} else {
 			$response = $response->withStatus(500);
@@ -157,3 +156,4 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 	    return addHeaders ($response);
 	}
 
+// test
