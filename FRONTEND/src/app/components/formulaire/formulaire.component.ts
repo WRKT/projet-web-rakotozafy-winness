@@ -10,10 +10,10 @@ import { UtilisateurService } from 'src/services/utilisateur.service';
 })
 export class FormulaireComponent implements OnInit {
   clientForm!: FormGroup;
-  
+
   constructor(
     private fb: FormBuilder,
-    private utilisateurService: UtilisateurService,
+    private utilisateurService: UtilisateurService
   ) {}
 
   ngOnInit(): void {

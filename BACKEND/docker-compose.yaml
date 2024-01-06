@@ -1,4 +1,5 @@
 version: '3'
+
 services:
   php-apache:
     build:
@@ -7,5 +8,5 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./src:/src
+      - ./deploy/api:/var/www/html/api
 
