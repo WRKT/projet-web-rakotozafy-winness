@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProduitService } from 'src/services/produit.service';
 import { Produit } from 'src/app/shared/models/produit.model';
 import { AddProduit } from 'src/app/shared/actions/panier-actions';
@@ -20,7 +20,7 @@ export class ListeProduitComponent implements OnInit {
   constructor(private produitService : ProduitService, private store: Store) { 
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   addProduit(produit: Produit) {
     this.store.dispatch(new AddProduit(produit));

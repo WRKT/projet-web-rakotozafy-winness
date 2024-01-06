@@ -15,6 +15,8 @@ export class LoginComponent {
   nom!: string;
   prenom!: string;
   connected!: boolean;
+  connexionOK!: string;
+  connexionKO!: string;
 
   produits$: Observable<Array<Produit>>;
   constructor(private produitService: ProduitService, private apiService: ApiService) {
@@ -27,6 +29,13 @@ export class LoginComponent {
         this.nom = data.nom;
         this.prenom = data.prenom;
         this.connected = true;
+        this.connexionOK = "Connexion réussie";
+        this.connexionKO = "";
+      },
+      () => {
+        this.connected = false;
+        this.connexionKO = "Identifiants incorrects. Connexion échouée";
+        this.connexionOK = "";
       }
     );
   }

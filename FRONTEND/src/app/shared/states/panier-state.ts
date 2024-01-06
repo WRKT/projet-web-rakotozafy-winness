@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { AddProduit, ClearProduit, RemoveProduit } from '../actions/panier-actions';
-import { PanierStateModel } from '../models/panier-state.model';
+import { AddProduit, ClearProduit, RemoveProduit } from 'src/app/shared/actions/panier-actions';
+import { PanierStateModel } from 'src/app/shared/models/panier-state.model';
 
 @State<PanierStateModel>({
   name: 'panier',
@@ -23,30 +23,30 @@ export class PanierState {
 
   @Action(AddProduit)
   Add(
-    { getState, patchState }: StateContext<PanierStateModel>,
+    { getState, setState }: StateContext<PanierStateModel>,
     { payload }: AddProduit
   ) {
     const state = getState();
-    patchState({
+    setState({
       panier: [...state.panier, payload],
     })
   }
 
   @Action(RemoveProduit)
   Remove(
-    { getState, patchState }: StateContext<PanierStateModel>,
+    { getState, setState }: StateContext<PanierStateModel>,
     { payload }: RemoveProduit
   ) {
     const state = getState();
-    patchState({
+    setState({
       panier: state.panier.filter((x) => !(payload.nom == x.nom)),
     })
   }
 
   @Action(ClearProduit)
-  Clear({ patchState }: StateContext<PanierStateModel>)
+  Clear({ setState }: StateContext<PanierStateModel>)
   {
-    patchState({
+    setState({
       panier:[] // Vide le panier
     })
   }

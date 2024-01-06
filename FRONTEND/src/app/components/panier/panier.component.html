@@ -23,10 +23,20 @@
     </tbody>
   </table>
 
-  <div class="d-flex justify-content-center">
-    <button *ngIf="(listeProduitsPanier$ | async)?.length" class="btn btn-dark" (click)="Clear()">
-      Vider Panier
-    </button>
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="fs-4 text-center">Total: {{ prixTotal | async | currency : "EUR" }}</div>
+    <div>
+      <button *ngIf="(listeProduitsPanier$ | async)?.length" class="btn btn-success me-2" (click)="Acheter()">
+        Acheter
+      </button>
+      <button *ngIf="(listeProduitsPanier$ | async)?.length" class="btn btn-dark" (click)="Clear()">
+        Vider Panier
+      </button>
+    </div>
+  </div>
+
+  <div class="col-md-4 mx-auto">
+    <div *ngIf="paiement" class="alert alert-success mt-4 text-center"> {{ paiement }}</div>
   </div>
 
   <ng-template #noProduits>

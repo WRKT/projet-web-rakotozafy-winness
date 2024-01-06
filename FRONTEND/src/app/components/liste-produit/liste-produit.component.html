@@ -2,12 +2,7 @@
   <div class="col-md-4">
     <form>
       <label class="fs-5 form-label">Recherche :</label>
-      <input
-        #input 
-        type="text"
-        class="form-control mb-4"
-        placeholder="Nom produit, categorie, ..." 
-        >
+      <input #input type="text" class="form-control mb-4" placeholder="Nom produit, categorie, description...">
     </form>
   </div>
 </div>
@@ -15,7 +10,6 @@
 <table class="table borderless">
   <thead>
     <tr>
-      <th>ID</th>
       <th>Nom</th>
       <th>Description</th>
       <th>Catégorie</th>
@@ -24,7 +18,6 @@
   </thead>
   <tbody *ngIf="model | async as response">
     <tr *ngFor="let produit of response">
-      <td>{{ produit.id }}</td>
       <td>{{ produit.nom }}</td>
       <td>{{ produit.description }}</td>
       <td>{{ produit.categorie }}</td>
@@ -37,4 +30,3 @@
     </tr>
   </tbody>
 </table>
-

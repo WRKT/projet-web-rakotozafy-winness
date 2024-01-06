@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
-import { PanierState } from '../../shared/states/panier-state';
+import { PanierState } from 'src/app/shared/states/panier-state';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,8 @@ export class HeaderComponent {
   @Select(PanierState.getNbProduits) nb$? : Observable<number>;
 
   headerTitle!: string;
-  constructor(private router: Router) {};
+
+  constructor(private router: Router) { };
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
@@ -42,4 +43,6 @@ export class HeaderComponent {
         this.headerTitle = 'Accueil';
     }
   }
+
+
 }
