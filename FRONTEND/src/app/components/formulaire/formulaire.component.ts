@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { UtilisateurService } from 'src/services/utilisateur.service';
 
 @Component({
@@ -32,10 +31,10 @@ export class FormulaireComponent implements OnInit {
   }
 
   creerUtilisateur() {
-    console.log("Création de l'utilisateur", this.clientForm.value); // ici ça m'affiche bien mes données
+    console.log(this.clientForm.value);
     this.utilisateurService.creerUtilisateur(this.clientForm.value).subscribe(
       (data) => {
-        console.log('Utilisateur créé avec succès', data); // ici ça m'affiche des données vides
+        console.log('Utilisateur créé avec succès', data);
       },
       (error) => {
         console.error("Erreur lors de la création de l'utilisateur", error);

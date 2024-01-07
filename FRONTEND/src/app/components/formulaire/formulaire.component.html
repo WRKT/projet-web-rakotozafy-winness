@@ -1,36 +1,41 @@
 <div class="login-container col-md-6 mx-auto">
   <form [formGroup]="clientForm" (ngSubmit)="creerUtilisateur()">
     <div class="form-group">
-      <label for="nom" class="fs-5">Nom</label>
+      <label for="nom" class="fs-5">Nom <span class="text-danger">*</span></label>
       <input formControlName="nom" name="nom" type="text" class="form-control mb-4 mt-2" id="nom"
         placeholder="Entrez votre nom ..." required />
     </div>
+
     <div class="form-group">
-      <label for="prenom" class="fs-5">Prénom</label>
+      <label for="prenom" class="fs-5">Prénom <span class="text-danger">*</span></label>
       <input formControlName="prenom" name="prenom" type="text" class="form-control mb-4 mt-2" id="prenom"
         placeholder="Entrez votre prénom ..." required />
     </div>
 
     <div class="form-group">
-      <label for="adresse" class="fs-5">Adresse</label>
+      <label for="adresse" class="fs-5">Adresse <span class="text-danger">*</span></label>
       <input formControlName="adresse" name="adresse" type="text" class="form-control mb-4 mt-2" id="adresse"
         placeholder="Entrez votre adresse ..." required />
     </div>
+
     <div class="form-group">
-      <label for="codepostal" class="fs-5">Code postal</label>
+      <label for="codepostal" class="fs-5">Code postal <span class="text-danger">*</span></label>
       <input formControlName="codepostal" name="codepostal" type="text" class="form-control mb-4 mt-2" id="codepostal"
         placeholder="Entrez votre code postal ..." required />
     </div>
+
     <div class="form-group">
-      <label for="ville" class="fs-5">Ville</label>
+      <label for="ville" class="fs-5">Ville <span class="text-danger">*</span></label>
       <input formControlName="ville" name="ville" type="text" class="form-control mb-4 mt-2" id="ville"
         placeholder="Entrez votre ville ..." required />
     </div>
+
     <div class="form-group">
-      <label for="email" class="fs-5">Email</label>
+      <label for="email" class="fs-5">Email <span class="text-danger">*</span></label>
       <input formControlName="email" name="email" type="email" class="form-control mb-4 mt-2" id="email"
         placeholder="Entrez votre email ..." required />
     </div>
+
     <div class="form-group">
       <label for="sexe" class="fs-5">Sexe</label>
       <select formControlName="sexe" name="sexe" class="form-control mb-4 mt-2" id="sexe" required>
@@ -39,23 +44,27 @@
         <option value="F">F</option>
       </select>
     </div>
+
     <div class="form-group">
-      <label for="login" class="fs-5">Login</label>
-      <input formControlName="login" name="login" type="login" class="form-control mb-4 mt-2" id="login"
+      <label for="login" class="fs-5">Login <span class="text-danger">*</span></label>
+      <input formControlName="login" name="login" type="text" class="form-control mb-4 mt-2" id="login"
         placeholder="Entrez votre login ..." required />
     </div>
+
     <div class="form-group">
-      <label for="password" class="fs-5">Mot de passe</label>
+      <label for="password" class="fs-5">Mot de passe <span class="text-danger">*</span></label>
       <input formControlName="password" name="password" type="password" class="form-control mb-4 mt-2" id="password"
         placeholder="Entrez votre mot de passe ..." required />
     </div>
+
     <div class="form-group">
-      <label for="telephone" class="fs-5">Telephone</label>
+      <label for="telephone" class="fs-5">Téléphone <span class="text-danger">*</span></label>
       <input formControlName="telephone" name="telephone" type="text" class="form-control mb-4 mt-2" id="telephone"
-        placeholder="Entrez votre telephone ..." required />
+        placeholder="Entrez votre téléphone ..." required />
     </div>
+
     <div class="text-center mt-4">
-      <button class="btn btn-dark fs-5" type="submit">S'inscrire</button>
+      <button class="btn btn-dark fs-4 px-5 py-3" type="submit">S'inscrire 🔥</button>
     </div>
   </form>
 </div>

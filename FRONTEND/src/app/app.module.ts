@@ -14,7 +14,6 @@ import { UtilisateurService } from 'src/services/utilisateur.service';
 // Composants
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { BodyComponent } from './components/body/body.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListeProduitComponent } from './components/liste-produit/liste-produit.component';
 import { PanierComponent } from './components/panier/panier.component';
@@ -30,7 +29,6 @@ import { ApiHttpInterceptor } from './http-interceptor';
   declarations: [
     AppComponent,
     HeaderComponent,
-    BodyComponent,
     FooterComponent,
     ListeProduitComponent,
     PanierComponent,
