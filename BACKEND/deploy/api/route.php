@@ -5,7 +5,7 @@
 	$app->options('/api/catalogue', 'optionsCatalogue' );
 
 	// API Nécessitant un Jwt valide
-	$app->get('/api/catalogue/{filtre}', 'getSearchCalatogue' );
+	$app->get('/api/catalogue/{filtre}', 'getSearchCatalogue' );
 
 	// API Nécessitant un Jwt valide
 	$app->get('/api/catalogue', 'getCatalogue');

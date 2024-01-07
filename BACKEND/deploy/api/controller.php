@@ -24,32 +24,17 @@ function getSearchCatalogue(Request $request, Response $response, $args)
 {
     global $entityManager;
 
-    $payload = getJWTToken($request);
-    $login  = $payload->userid;
+    // Récupérer le mot-clé de la route
+    $filtre = $args['filtre'];
 
-    $queryParams = $request->getQueryParams();
-
-    $nom = $queryParams['nom'] ?? null;
-    $description = $queryParams['description'] ?? null;
-    $categorie = $queryParams['categorie'] ?? null;
-
-    $produitRepository = $entityManager->getRepository(Produits::class);
-
-    $criteria = [];
-
-    if ($nom !== null) {
-        $criteria['nom'] = $nom;
-    }
-
-    if ($description !== null) {
-        $criteria['description'] = $description;
-    }
-
-    if ($categorie !== null) {
-        $criteria['categorie'] = $categorie;
-    }
-
-    $produits = $produitRepository->findBy($criteria);
+    $produitRepository = $entityManager->getRepository('Produits');
+    
+    // Utiliser le repository pour rechercher les produits avec le mot-clé
+    $produits = $produitRepository->createQueryBuilder('p')
+        ->where('LOWER(p.nom) LIKE :filtre OR LOWER(p.description) LIKE :filtre')
+        ->setParameter('filtre', '%' . strtolower($filtre) . '%') // Convertir le mot-clé en minuscules
+        ->getQuery()
+        ->getResult();
 
     if ($produits) {
         $data = array();
@@ -62,17 +47,16 @@ function getSearchCatalogue(Request $request, Response $response, $args)
                 'categorie' => $produit->getCategorie()
             );
         }
-
         $response = addHeaders($response);
         $response = createJwT($response);
         $response->getBody()->write(json_encode($data));
     } else {
         $response = $response->withStatus(404);
+        $response->getBody()->write("Aucun produit trouvé pour le filtre '$filtre'.");
     }
 
     return addHeaders($response);
 }
-
 
 // API Nécessitant un Jwt valide
 function getCatalogue(Request $request, Response $response, $args)
@@ -157,9 +141,29 @@ function creerUtilisateur(Request $request, Response $response, $args)
 	// Hachage du mot de passe !!
 	$password = password_hash($password, PASSWORD_BCRYPT);
 
-    if (empty($nom) || empty($prenom) || empty($login) || empty($password)) {
+    if (empty($nom) || empty($prenom) || empty($login) || empty($password) || empty($email) || empty($telephone) || empty($adresse) || empty($codepostal) || empty($ville)) {
         $error = true;
     }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL) || strlen($email) > 100 || strlen($email) < 5) {
+        $error = true;
+    }
+    
+    if (!preg_match("/^[0-9]{10}$/", $telephone)) {
+        $error = true;
+    }
+    
+    if (strlen($login) < 4 || strlen($login) > 20 || !preg_match("/^[a-zA-Z0-9.]{1,20}$/", $login)) {
+        $error = true;
+    }
+
+    // if (strlen($password) < 6 || strlen($password) > 20) {
+    //     $error = true;
+    // }
+    // // Mot de passe avec caractères spéciaux
+    // if (!preg_match("/^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\-]+$/", $password)) {
+    //     $error = true;
+    // }
 
     if (!$error) {
         $utilisateur = new Utilisateurs();
@@ -208,10 +212,10 @@ function postLogin(Request $request, Response $response, $args)
     $login = $body['login'] ?? "";
     $password = $body['password'] ?? "";
 
-    if (!preg_match("/[a-zA-Z0-9]{1,20}/", $login)) {
+    if (!preg_match("/[a-zA-Z0-9.]{1,20}/", $login)) {
         $error = true;
     }
-    if (!preg_match("/[a-zA-Z0-9]{1,20}/", $password)) {
+    if (!preg_match("/[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]{1,20}/", $password)) {
         $error = true;
     }
 
@@ -233,5 +237,3 @@ function postLogin(Request $request, Response $response, $args)
 
     return addHeaders($response);
 }
-
-
