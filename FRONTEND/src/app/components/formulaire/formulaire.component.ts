@@ -10,6 +10,13 @@ import { UtilisateurService } from 'src/services/utilisateur.service';
 export class FormulaireComponent implements OnInit {
   clientForm!: FormGroup;
 
+  regexLogin = /[a-zA-Z0-9.]{1,20}/;
+  regexPassword = /[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]{6,20}/;
+  regexTelephone = /[0-9]{10}/;
+  regexCodePostal = /[0-9]{5}/;
+  regexString = /[A-Za-z]{2,30}/;
+  regexEmail = /[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}/;
+
   constructor(
     private fb: FormBuilder,
     private utilisateurService: UtilisateurService
@@ -40,5 +47,6 @@ export class FormulaireComponent implements OnInit {
         console.error("Erreur lors de la création de l'utilisateur", error);
       }
     );
+    this.clientForm.reset();
   }
 }

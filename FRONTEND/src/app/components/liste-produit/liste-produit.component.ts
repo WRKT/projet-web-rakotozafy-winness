@@ -20,7 +20,9 @@ export class ListeProduitComponent implements OnInit {
   constructor(private produitService : ProduitService, private store: Store) { 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.model = this.produitService.getProduits();
+  }
 
   addProduit(produit: Produit) {
     this.store.dispatch(new AddProduit(produit));
@@ -37,7 +39,8 @@ export class ListeProduitComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term) =>
         this.produitService.search(term).pipe(
-          catchError(() => {
+          catchError((error) => {
+            console.log(error);
             return of([]);
           })
         )

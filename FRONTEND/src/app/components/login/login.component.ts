@@ -32,7 +32,8 @@ export class LoginComponent {
         this.connexionOK = "Connexion réussie";
         this.connexionKO = "";
       },
-      () => {
+      (error) => {
+        console.log(error);
         this.connected = false;
         this.connexionKO = "Identifiants incorrects. Connexion échouée";
         this.connexionOK = "";

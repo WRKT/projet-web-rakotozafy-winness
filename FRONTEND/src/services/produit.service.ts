@@ -17,10 +17,7 @@ export class ProduitService {
     }
 
     search(term: string) {
-      if (term === '') {
-        return this.getProduits();
-      }
-      return this.http.get(`http://localhost:8080/api/catalogue/${term}`)
+      return this.http.get(environment.backendCatalogue+"/"+term)
     }
 }
 

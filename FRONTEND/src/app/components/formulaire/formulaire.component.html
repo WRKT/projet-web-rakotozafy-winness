@@ -2,38 +2,56 @@
   <form [formGroup]="clientForm" (ngSubmit)="creerUtilisateur()">
     <div class="form-group">
       <label for="nom" class="fs-5">Nom <span class="text-danger">*</span></label>
-      <input formControlName="nom" name="nom" type="text" class="form-control mb-4 mt-2" id="nom"
+      <input formControlName="nom" name="nom" type="text" class="form-control my-2" id="nom"
         placeholder="Entrez votre nom ..." required />
+      <div *ngIf="!regexString.test(clientForm.get('nom')?.value)" class="custom-error-message mb-4">
+        Le nom doit contenir uniquement des lettres (2 à 30 caractères).
+      </div>
     </div>
 
     <div class="form-group">
       <label for="prenom" class="fs-5">Prénom <span class="text-danger">*</span></label>
-      <input formControlName="prenom" name="prenom" type="text" class="form-control mb-4 mt-2" id="prenom"
+      <input formControlName="prenom" name="prenom" type="text" class="form-control my-2" id="prenom"
         placeholder="Entrez votre prénom ..." required />
+      <div *ngIf="!regexString.test(clientForm.get('prenom')?.value)" class="custom-error-message mb-4">
+        Le prenom doit contenir uniquement des lettres (2 à 30 caractères).
+      </div>
     </div>
 
     <div class="form-group">
       <label for="adresse" class="fs-5">Adresse <span class="text-danger">*</span></label>
-      <input formControlName="adresse" name="adresse" type="text" class="form-control mb-4 mt-2" id="adresse"
+      <input formControlName="adresse" name="adresse" type="text" class="form-control my-2" id="adresse"
         placeholder="Entrez votre adresse ..." required />
+      <div *ngIf="!regexString.test(clientForm.get('adresse')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer une adresse valide.
+      </div>
     </div>
 
     <div class="form-group">
       <label for="codepostal" class="fs-5">Code postal <span class="text-danger">*</span></label>
-      <input formControlName="codepostal" name="codepostal" type="text" class="form-control mb-4 mt-2" id="codepostal"
+      <input formControlName="codepostal" name="codepostal" type="text" class="form-control my-2" id="codepostal"
         placeholder="Entrez votre code postal ..." required />
+      <div *ngIf="!regexCodePostal.test(clientForm.get('codepostal')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer un code postal valide.
+      </div>
     </div>
 
     <div class="form-group">
       <label for="ville" class="fs-5">Ville <span class="text-danger">*</span></label>
-      <input formControlName="ville" name="ville" type="text" class="form-control mb-4 mt-2" id="ville"
+      <input formControlName="ville" name="ville" type="text" class="form-control my-2" id="ville"
         placeholder="Entrez votre ville ..." required />
+      <div *ngIf="!regexString.test(clientForm.get('ville')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer une ville valide.
+      </div>
     </div>
 
     <div class="form-group">
       <label for="email" class="fs-5">Email <span class="text-danger">*</span></label>
-      <input formControlName="email" name="email" type="email" class="form-control mb-4 mt-2" id="email"
+      <input formControlName="email" name="email" type="email" class="form-control my-2" id="email"
         placeholder="Entrez votre email ..." required />
+      <div *ngIf="!regexEmail.test(clientForm.get('email')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer une adresse email valide.
+      </div>
     </div>
 
     <div class="form-group">
@@ -47,20 +65,29 @@
 
     <div class="form-group">
       <label for="login" class="fs-5">Login <span class="text-danger">*</span></label>
-      <input formControlName="login" name="login" type="text" class="form-control mb-4 mt-2" id="login"
+      <input formControlName="login" name="login" type="text" class="form-control my-2" id="login"
         placeholder="Entrez votre login ..." required />
+      <div *ngIf="!regexString.test(clientForm.get('login')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer un login valide : 2 à 30 caractères, des lettres et des chiffres (sans espace, point autorisé).
+      </div>
     </div>
 
     <div class="form-group">
       <label for="password" class="fs-5">Mot de passe <span class="text-danger">*</span></label>
-      <input formControlName="password" name="password" type="password" class="form-control mb-4 mt-2" id="password"
+      <input formControlName="password" name="password" type="password" class="form-control my-2" id="password"
         placeholder="Entrez votre mot de passe ..." required />
+      <div *ngIf="!regexPassword.test(clientForm.get('password')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer un mot de passe valide : 6 à 20 caractères, des lettres et des chiffres et caractère spéciaux.
+      </div>
     </div>
 
     <div class="form-group">
       <label for="telephone" class="fs-5">Téléphone <span class="text-danger">*</span></label>
-      <input formControlName="telephone" name="telephone" type="text" class="form-control mb-4 mt-2" id="telephone"
+      <input formControlName="telephone" name="telephone" type="text" class="form-control my-2" id="telephone"
         placeholder="Entrez votre téléphone ..." required />
+      <div *ngIf="!regexTelephone.test(clientForm.get('telephone')?.value)" class="custom-error-message mb-4">
+        Veuillez entrer un numéro de téléphone valide.
+      </div>
     </div>
 
     <div class="text-center mt-4">
