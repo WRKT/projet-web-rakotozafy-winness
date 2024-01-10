@@ -28,21 +28,19 @@ export class HeaderComponent {
   
     switch (currentRoute) {
       case '/formulaire':
-        this.headerTitle = 'Inscription';
+        this.headerTitle = 'INSCRIPTION';
         break;
       case '/login':
-        this.headerTitle = 'Connexion';
+        this.headerTitle = 'CONNEXION';
         break;
       case '/catalogue':
-        this.headerTitle = 'Catalogue';
+        this.headerTitle = 'CATALOGUE';
         break;
       case '/panier':
-        this.headerTitle = 'Panier';
+        this.headerTitle = 'PANIER';
         break;
       default:
-        this.headerTitle = 'Accueil';
+        this.headerTitle = 'ACCUEIL';
     }
   }
-
-
 }

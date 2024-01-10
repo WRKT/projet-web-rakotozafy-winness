@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Produit } from 'src/app/shared/models/produit.model';
 import { environment } from 'src/environments/environment';
 
@@ -17,6 +17,9 @@ export class ProduitService {
     }
 
     search(term: string) {
+      if (term === '') {
+        return this.getProduits();
+      }
       return this.http.get(environment.backendCatalogue+"/"+term)
     }
 }

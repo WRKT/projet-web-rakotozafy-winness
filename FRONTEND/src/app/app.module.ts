@@ -19,10 +19,10 @@ import { ListeProduitComponent } from './components/liste-produit/liste-produit.
 import { PanierComponent } from './components/panier/panier.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormulaireComponent } from './components/formulaire/formulaire.component';
+import { LoginComponent } from './components/login/login.component';
 
 // States
 import { PanierState } from './shared/states/panier-state';
-import { LoginComponent } from './components/login/login.component';
 import { ApiHttpInterceptor } from './http-interceptor';
 
 @NgModule({

@@ -14,14 +14,14 @@
       <button class="btn btn-dark mb-4 fs-4 px-5 py-3" type="submit">Se connecter ⚡</button>
     </div>
     <div class="text-center">
-      <p class="fs-5 mb-5">Pas encore inscrit ? 👉 <a [routerLink]="['/formulaire']" class="fw-bold link-dark">Inscrivez-vous</a> 👈</p>
+      <p class="fs-5 mb-5">Pas encore inscrit ? 👉 <a [routerLink]="['/formulaire']" class="fw-bold link-dark icon-link-hover">Inscrivez-vous</a> 👈</p>
     </div>
   </form>
 </div>
 
 <div *ngIf="connected" class="text-center">
   <p class="hello">Hello there, {{ prenom }} {{ nom }} 👋 !</p>
-  <p class="mb-5">Visitez le catalogue en cliquant <a class="fw-bolder link-dark" [routerLink]="['/catalogue']">ICI </a>🔥</p>
+  <p class="mb-5">Visitez notre super catalogue en cliquant <a class="fw-bold link-dark icon-link-hover " [routerLink]="['/catalogue']">ICI</a> 🔥</p>
 </div>
 
 <div class="col-md-4 mx-auto">

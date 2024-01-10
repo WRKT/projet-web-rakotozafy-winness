@@ -16,7 +16,7 @@
           <th>Prix</th>
         </tr>
       </thead>
-      <tbody *ngIf="model | async as response">
+      <tbody *ngIf="model$ | async as response">
         <tr *ngFor="let produit of response">
           <td>{{ produit.nom }}</td>
           <td>{{ produit.description }}</td>

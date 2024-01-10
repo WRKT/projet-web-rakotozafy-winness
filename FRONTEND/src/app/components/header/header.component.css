@@ -1,0 +1,28 @@
+.nav-link {
+    position: relative;
+    color: #dbdbdb;
+    font-weight: 500;
+    margin-right: 1em;
+    margin-left: 1em;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #dbdbdb;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #fff;
+}
