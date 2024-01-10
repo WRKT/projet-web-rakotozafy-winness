@@ -27,12 +27,15 @@ function getSearchCatalogue(Request $request, Response $response, $args)
     // Récupérer le mot-clé de la route
     $filtre = $args['filtre'];
 
+    if (empty($filtre)) {
+        return getCatalogue($request, $response, $args);
+    }
+    
     $produitRepository = $entityManager->getRepository('Produits');
     
-    // Utiliser le repository pour rechercher les produits avec le mot-clé
     $produits = $produitRepository->createQueryBuilder('p')
         ->where('LOWER(p.nom) LIKE :filtre OR LOWER(p.description) LIKE :filtre')
-        ->setParameter('filtre', '%' . strtolower($filtre) . '%') // Convertir le mot-clé en minuscules
+        ->setParameter('filtre', '%' . strtolower($filtre) . '%')
         ->getQuery()
         ->getResult();
 
