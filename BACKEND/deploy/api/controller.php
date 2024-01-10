@@ -63,12 +63,10 @@ function getCatalogue(Request $request, Response $response, $args)
 {
 	global $entityManager;
 
-	$payload = getJWTToken($request);
-	$login  = $payload->userid;
-
 	$produitRepository = $entityManager->getRepository('Produits');
 	$produits = $produitRepository->findAll();
-	if ($produits) {
+	
+    if ($produits) {
 		$data = array();
 		foreach ($produits as $produit) {
 			$data[] = array(
@@ -138,9 +136,6 @@ function creerUtilisateur(Request $request, Response $response, $args)
     $password = $body['password'] ?? "";
     $telephone = $body['telephone'] ?? "";
 
-	// Hachage du mot de passe !!
-	$password = password_hash($password, PASSWORD_BCRYPT);
-
     if (empty($nom) || empty($prenom) || empty($login) || empty($password) || empty($email) || empty($telephone) || empty($adresse) || empty($codepostal) || empty($ville)) {
         $error = true;
     }
@@ -157,15 +152,13 @@ function creerUtilisateur(Request $request, Response $response, $args)
         $error = true;
     }
 
-    // if (strlen($password) < 6 || strlen($password) > 20) {
-    //     $error = true;
-    // }
-    // // Mot de passe avec caractères spéciaux
-    // if (!preg_match("/^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\\-]+$/", $password)) {
-    //     $error = true;
-    // }
+    if (strlen($password) < 6 || strlen($password) > 20 || !preg_match("/^[a-zA-Z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]{1,20}$/", $password)) {
+        $error = true;
+    }
 
     if (!$error) {
+        // Hachage du mot de passe !!
+	    $password = password_hash($password, PASSWORD_BCRYPT); // Si mise en hors de validation error, génère une erreur 500
         $utilisateur = new Utilisateurs();
         $utilisateur->setNom($nom);
         $utilisateur->setPrenom($prenom);
