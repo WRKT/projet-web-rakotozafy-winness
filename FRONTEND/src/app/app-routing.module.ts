@@ -7,11 +7,12 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { FormulaireComponent } from './components/formulaire/formulaire.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AccueilComponent },
+  { path: '', component: AccueilComponent},
   { path: 'formulaire', component: FormulaireComponent},
   { path: 'login', component: LoginComponent},
   { path: 'catalogue', component: ListeProduitComponent },
   { path: 'panier', component: PanierComponent },
+  {path: '**', redirectTo: ''}
 ];
 
 @NgModule({
