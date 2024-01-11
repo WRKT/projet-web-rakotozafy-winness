@@ -46,12 +46,12 @@ export class FormulaireComponent implements OnInit {
         (data) => {
           console.log('Utilisateur créé avec succès', data);
           this.formSuccess = 'Utilisateur créé avec succès';
+          this.clientForm.reset();
         },
         (error) => {
           console.error("Erreur lors de la création de l'utilisateur", error);
         }
       );
-      this.clientForm.reset();
     } else {
       this.formError = 'Le formulaire contient des erreurs. Veuillez vérifier les champs.';
     }
