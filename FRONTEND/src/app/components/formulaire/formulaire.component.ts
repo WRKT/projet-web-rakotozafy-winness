@@ -10,6 +10,7 @@ import { UtilisateurService } from 'src/services/utilisateur.service';
 export class FormulaireComponent implements OnInit {
   clientForm!: FormGroup;
   formError!: string;
+  formSuccess!: string;
 
   regexLogin = /^[a-zA-Z0-9.]{1,20}$/;
   regexPassword = /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]{6,20}$/;
@@ -44,6 +45,7 @@ export class FormulaireComponent implements OnInit {
       this.utilisateurService.creerUtilisateur(this.clientForm.value).subscribe(
         (data) => {
           console.log('Utilisateur créé avec succès', data);
+          this.formSuccess = 'Utilisateur créé avec succès';
         },
         (error) => {
           console.error("Erreur lors de la création de l'utilisateur", error);

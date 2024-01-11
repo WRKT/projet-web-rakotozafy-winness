@@ -20,5 +20,7 @@
 	// APi d'authentification générant un JWT
 	$app->post('/api/utilisateur/login', 'postLogin');
 	
-	
+	$app->any('/{routes:.+}', function (Request $request, Response $response) {
+		return $response->withRedirect('/');
+	});
 

@@ -90,6 +90,7 @@
       </div>
     </div>
 
+    <div *ngIf="formSuccess" class="alert alert-success mt-4"> {{ formSuccess }} </div>
     <div *ngIf="formError" class="alert alert-danger mt-4"> {{ formError }} </div>
     <div class="text-center mt-4">
       <button class="btn btn-dark fs-4 px-5 py-3" type="submit">S'inscrire 🔥</button>
