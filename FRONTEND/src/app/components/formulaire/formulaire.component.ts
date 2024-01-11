@@ -16,7 +16,7 @@ export class FormulaireComponent implements OnInit {
   regexPassword = /^[A-Za-z0-9!@#$%^&*()_+{}\[\]:;<>,.?~\-]{6,20}$/;
   regexTelephone = /^[0-9]{10}$/;
   regexCodePostal = /^[0-9]{5}$/;
-  regexString = /^[A-Za-z]+-?[A-Za-z]+$/;
+  regexString = /^[A-Za-z_]+-?[A-Za-z]+$/;
   regexEmail = /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
 
   constructor(
