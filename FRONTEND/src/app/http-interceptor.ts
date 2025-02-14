@@ -16,7 +16,7 @@ export class ApiHttpInterceptor implements HttpInterceptor {
       req = req.clone({
         setHeaders: { Authorization: `Bearer ${this.jwtToken}` },
       });
-      console.log('Bearer renvoyé : ' + this.jwtToken);
+      console.log('Bearer renvoyé (for keeping streak) : ' + this.jwtToken);
     }
 
     return next.handle(req).pipe(
